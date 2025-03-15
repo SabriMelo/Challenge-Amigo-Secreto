@@ -1,4 +1,4 @@
-let nomes = [];
+let nomes = []; 
 function adicionarAmigo() {
   let input = document.getElementById("amigo");
   let amigo = input.value.trim();
@@ -25,11 +25,17 @@ function atualizarLista() {
 function sortearAmigo() {
   if (nomes.length === 0) {
     alert("Por favor, adicione os nomes antes de sortear!");
+    document.getElementById("resultado").textContent = "Todos os nomes foram sorteados!";
     return;
   }
-  let sorteado = nomes[Math.floor(Math.random() * nomes.length)];
+  
+  let nomeSorteado = nomes[Math.floor(Math.random() * nomes.length)];
+  let sorteado = nomes[nomeSorteado];
+
+  nomes.splice(nomeSorteado, 1);
+  atualizarLista();
   document.getElementById("resultado").textContent =
-    "Nome Sorteado: " + sorteado;
+    "Nome Sorteado: " + nomeSorteado;
 }
 function zerar() {
   nomes = [];
